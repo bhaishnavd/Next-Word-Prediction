@@ -1,206 +1,173 @@
+#  Next Word Prediction (LSTM ➝ Transformer)
 
-# Next Word Prediction using LSTM
+## 📌 Project Overview
 
-## Project Overview
+This project demonstrates **Next Word Prediction** using two approaches:
 
-This project implements a **Next Word Prediction system** using **Natural Language Processing (NLP)** and **Deep Learning**.
-The model is trained on text data and learns to predict the **most probable next word** given a sequence of words.
+*  **LSTM-based Deep Learning Model (Initial Version)**
+*  **Transformer-based Model using GPT-2 (Upgraded Version)**
 
-For example:
-
-Input:
-
-```
-machine learning is
-```
-
-Output:
-
-```
-machine learning is a powerful tool
-```
-
-The model is built using **TensorFlow/Keras with an LSTM architecture** and is deployed with an interactive **Streamlit interface**.
+It predicts the **next word** given an input sequence and showcases the transition from traditional deep learning to modern NLP architectures.
 
 ---
 
-## Technologies Used
+##  Project Evolution
+
+### 🔹 Initial Version (LSTM)
+
+* Built using **TensorFlow / Keras**
+* Used **Embedding + LSTM layers**
+* Trained on dataset for sequence prediction
+
+### 🔹 Updated Version (Transformer 🚀)
+
+* Upgraded to **GPT-2 (Transformer)**
+* Uses **Hugging Face Transformers**
+* Implemented using **PyTorch**
+* No training required (pre-trained model)
+
+---
+
+## ⚙️ Tech Stack
+
+### LSTM Version
 
 * Python
 * TensorFlow / Keras
 * NumPy
-* Natural Language Processing (NLP)
-* Streamlit (for UI)
+
+### Transformer Version
+
+* Python
+* Hugging Face Transformers
+* PyTorch
+* Streamlit
 
 ---
 
-## Model Architecture
+## 🏗️ Model Details
 
-The system uses an **LSTM (Long Short-Term Memory) neural network**, which is well-suited for sequential data such as text.
+### 📌 LSTM
 
-Main components:
+* Sequential Model
+* Embedding Layer
+* LSTM Layer
+* Dense Layer
 
-1. **Tokenizer**
+### 📌 Transformer (GPT-2)
 
-   * Converts words into numerical tokens.
-
-2. **Padding**
-
-   * Ensures all sequences have the same length.
-
-3. **Embedding Layer**
-
-   * Converts tokens into dense vector representations.
-
-4. **LSTM Layers**
-
-   * Learns contextual relationships between words.
-
-5. **Dense Layer (Softmax)**
-
-   * Predicts the probability distribution of the next word.
+* Pre-trained GPT-2 model
+* AutoTokenizer
+* AutoModelForCausalLM
 
 ---
 
-## Where This System Can Be Used
+## 💻 How It Works
 
-Next word prediction is widely used in modern applications:
+### LSTM Approach
 
-* **Smart keyboards** (Google Keyboard, SwiftKey)
-* **Search engines** for query suggestions
-* **Email auto-completion**
-* **Chatbots and conversational AI**
-* **Text generation systems**
-* **Writing assistance tools**
+1. Text preprocessing
+2. Sequence creation
+3. Model training
+4. Predict next word
 
-This project demonstrates the **core concept behind these technologies**.
+### Transformer Approach
+
+1. Input text is tokenized
+2. GPT-2 generates next token probabilities
+3. Highest probability token is selected
+4. Token is decoded into word
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
-```
-next_word_prediction/
-│
-├── train_model.py        # Script to train the LSTM model
-├── predict.py            # Streamlit application for prediction
-├── nxtpredict.txt        # Training dataset
-├── tokenizer.pkl         # Saved tokenizer
-├── seq_len.pkl           # Saved sequence length
-├── next_word_model.h5    # Trained model
-├── requirements.txt      # Python dependencies
-└── README.md
+```bash
+README.md                     # Project documentation
+next_word_model_transformer.py  # Transformer model logic (updated version)
+transformer_st.py              # Streamlit web app
+train_model.py                 # LSTM model training
+predict.py                     # LSTM prediction script
 ```
 
 ---
 
-## Setup and Installation (Local System)
+## ▶️ Run the Project
 
-### 1. Clone the repository
+### 1. Install dependencies
 
-```
-git clone <your-repository-url>
-cd next_word_prediction
-```
-
-### 2. Create a virtual environment (recommended)
-
-```
-python -m venv venv
-```
-
-Activate the environment:
-
-Windows
-
-```
-venv\Scripts\activate
-```
-
-Linux / Mac
-
-```
-source venv/bin/activate
-```
-
----
-
-### 3. Install dependencies
-
-```
+```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-### 4. Train the model (optional)
+### 2. Run Transformer Web App (Recommended 🚀)
 
-If you want to retrain the model:
-
-```
-python train_model.py
-```
-
-This will generate:
-
-* `next_word_model.h5`
-* `tokenizer.pkl`
-* `seq_len.pkl`
-
----
-
-### 5. Run the application
-
-Start the Streamlit interface:
-
-```
-streamlit run predict.py
-```
-
-Open the browser:
-
-```
-http://localhost:8501
+```bash
+python -m streamlit run transformer_st.py
 ```
 
 ---
 
-## Example Usage
+## 📸 Example
 
-Input:
-
-```
-deep learning
-```
-
-Output:
+**Input:**
 
 ```
-deep learning is a powerful technique
+I love artificial
 ```
 
-The system generates the **next word repeatedly to create a continuous sentence**.
+**Output:**
+
+```
+Next word: intelligence
+```
 
 ---
 
-## Future Improvements
+## ✨ Features
 
-This project currently uses an **LSTM-based architecture**.
+* LSTM-based prediction (custom trained)
+* Transformer-based prediction (GPT-2)
+* Interactive UI with Streamlit
+* Real-time next word prediction
 
-In future versions, we plan to upgrade the model using **Transformer-based architectures**, such as:
+---
 
-* GPT-style language models
+## 🚀 Why Transformer Upgrade?
+
+* Better context understanding
+* Handles long-range dependencies
+* More accurate predictions
+* Uses state-of-the-art NLP model
+
+---
+
+## 📝 Commit Highlights
+
+* ✅ Initial commit → LSTM model implementation
+* ✅ Added training and prediction scripts
+* 🚀 Updated project → Migrated from LSTM to Transformer (GPT-2)
+
+---
+
+## 🔮 Future Improvements
+
+* Top-K predictions
+* Sentence completion
+* Fine-tuning GPT-2
+* Deployment on cloud
+
+---
+
+## 🙌 Acknowledgements
+
 * Hugging Face Transformers
-* Attention-based sequence modeling
-
-These models significantly improve:
-
-* contextual understanding
-* long-range dependencies
-* text generation quality
+* GPT-2 Model
+* TensorFlow / Keras
+* Streamlit
 
 ---
 
-
-
-Developed as a **Natural Language Processing project** demonstrating the fundamentals of **language modeling and sequence prediction**.
+⭐ This project highlights the transition from traditional RNNs (LSTM) to modern Transformer-based NLP models.
